@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OJK Coffee Shop — Interactive Web App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">O.</span><span>OJK <small>COFFEE SHOP</small></span></a>
+    <nav>
+      <a href="#katalog">Pesan Kopi</a>
+      <a href="#keranjang-sec">Keranjang (<span id="cart-count">0</span>)</a>
+      <a href="#barista-sec">Dashboard Barista</a>
+    </nav>
+  </header>
+
+  <main class="app-container">
+    <!-- KATALOG MENU -->
+    <section class="section" id="katalog">
+      <div class="section-head">
+        <h2>Pilih Menu Kopi<span>.</span></h2>
+        <p>Pencet menu di bawah untuk mengatur varian dan memasukkannya ke keranjang.</p>
+      </div>
+      <div class="menu-grid" id="menu-container">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- MODAL KUSTOMISASI -->
+    <div class="modal-overlay" id="custom-modal">
+      <div class="modal-card">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <h3 id="modal-title">Kustomisasi Minuman</h3>
+        
+        <div class="option-group">
+          <label>Ukuran Gelas:</label>
+          <div class="btn-options" id="opt-size">
+            <button class="opt-btn active" data-val="Regular">Regular</button>
+            <button class="opt-btn" data-val="Large (+Rp 5.000)">Large (+5k)</button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>Tingkat Gula (Sugar Level):</label>
+          <div class="btn-options" id="opt-sugar">
+            <button class="opt-btn" data-val="0%">0%</button>
+            <button class="opt-btn active" data-val="50%">50%</button>
+            <button class="opt-btn" data-val="100%">100%</button>
+          </div>
+        </div>
+
+        <div class="option-group">
+          <label>Pilihan Susu:</label>
+          <div class="btn-options" id="opt-milk">
+            <button class="opt-btn active" data-val="Fresh Milk">Fresh Milk</button>
+            <button class="opt-btn" data-val="Oat Milk (+Rp 6.000)">Oat Milk (+6k)</button>
+          </div>
+        </div>
+
+        <button class="btn primary full-btn" onclick="addToCartFromModal()">Tambahkan ke Keranjang</button>
+      </div>
+    </div>
+
+    <!-- KERANJANG & CHECKOUT -->
+    <section class="section beige-section" id="keranjang-sec">
+      <div class="section-head">
+        <h2>Keranjang Pesanan<span>.</span></h2>
+      </div>
+      <div class="cart-wrapper">
+        <ul class="cart-list" id="cart-items">
+          <li class="empty-msg">Keranjang masih kosong. Pilih menu di atas!</li>
+        </ul>
+        <div class="cart-summary">
+          <h3>Total: <span id="cart-total">Rp 0</span></h3>
+          <button class="btn primary" id="btn-checkout" onclick="checkout()" disabled>Kirim Pesanan ke Barista</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD BARISTA -->
+    <section class="section" id="barista-sec">
+      <div class="section-head">
+        <h2>Dashboard Barista<span>.</span></h2>
+        <p>Klik tombol status pada antrean pesanan untuk memperbarui proses secara real-time.</p>
+      </div>
+      <div class="orders-grid" id="orders-list">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
